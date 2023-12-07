@@ -1,0 +1,57 @@
+{
+  "name": "@medplum/app",
+  "version": "2.1.25",
+  "description": "Medplum App",
+  "homepage": "https://www.medplum.com/",
+  "bugs": {
+    "url": "https://github.com/medplum/medplum/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medplum/medplum.git",
+    "directory": "packages/app"
+  },
+  "license": "Apache-2.0",
+  "author": "Medplum <hello@medplum.com>",
+  "type": "module",
+  "files": [
+    ".env.defaults",
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc && vite build",
+    "clean": "rimraf dist",
+    "dev": "vite --host",
+    "source-map-explorer": "source-map-explorer dist/**/*.js --gzip",
+    "test": "jest"
+  },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
+  "devDependencies": {
+    "@emotion/react": "11.11.1",
+    "@mantine/core": "6.0.21",
+    "@mantine/dropzone": "6.0.21",
+    "@mantine/hooks": "6.0.21",
+    "@mantine/notifications": "6.0.21",
+    "@medplum/core": "file:../../packages/core",
+    "@medplum/definitions": "file:../../packages/definitions",
+    "@medplum/fhirtypes": "file:../../packages/fhirtypes",
+    "@medplum/mock": "file:../../packages/mock",
+    "@medplum/react": "file:../../packages/react",
+    "@tabler/icons-react": "2.42.0",
+    "@testing-library/jest-dom": "6.1.5",
+    "@testing-library/react": "14.1.2",
+    "@types/react": "18.2.42",
+    "@types/react-dom": "18.2.17",
+    "@vitejs/plugin-react": "4.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.20.1",
+    "rfc6902": "5.1.1",
+    "vite": "5.0.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

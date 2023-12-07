@@ -1,0 +1,49 @@
+{
+  "name": "medplum-hello-world",
+  "private": true,
+  "version": "2.0.28",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@emotion/react": "11.11.1",
+    "@mantine/core": "6.0.17",
+    "@mantine/hooks": "6.0.17",
+    "@mantine/notifications": "6.0.17",
+    "@medplum/core": "2.0.28",
+    "@medplum/eslint-config": "2.0.28",
+    "@medplum/fhirtypes": "2.0.28",
+    "@medplum/react": "file:../../packages/react",
+    "@refinedev/cli": "^2.7.4",
+    "@refinedev/inferencer": "^4.3.2",
+    "@refinedev/kbar": "^1.1.2",
+    "@refinedev/mantine": "^2.5.0",
+    "@refinedev/react-table": "^5.1.4",
+    "@refinedev/simple-rest": "^4.0.0",
+    "@tabler/icons-react": "2.29.0",
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.17",
+    "@types/react-dom": "18.2.7",
+    "@vitejs/plugin-react": "4.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.14.2",
+    "typescript": "5.1.6",
+    "vite": "5.0.6"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@medplum/eslint-config"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "@refinedev/core": "^4.28.2",
+    "@refinedev/react-router-v6": "^4.5.0"
+  }
+}
