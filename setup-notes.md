@@ -75,9 +75,13 @@ ServiceRequest --> DiagnosticReport --> Observation --> (if DICOM) --> ImagingSt
 - see FHIR link: https://www.hl7.org/fhir/R4/diagnostics-module.html
 
 
-## Merge steps to keep code in sync with upstream
+## Merge steps to keep code in sync with upstream (120623)
 - https://timwise.co.uk/2019/10/14/merge-vs-rebase/
 1. Merge upstream medplum repo into `main` branch of medplum-path repo
 1. In `develop` branch run `git fetch`
 1. Run `git merge origin/main`
 1. Run `git push`
+
+## Setup Steps from new repo (120723)
+- created new docker-compose file to include DB volume
+- copy in current packages/server/medplum.config.json
