@@ -85,3 +85,8 @@ ServiceRequest --> DiagnosticReport --> Observation --> (if DICOM) --> ImagingSt
 ## Setup Steps from new repo (120723)
 - created new docker-compose file to include DB volume
 - copy in current packages/server/medplum.config.json
+- modify 'pacakage.json' in custom apps to point to medplum modules in `packages` dir (file:../../packages/react)
+
+### Customizations
+1. packages/server/src/auth/me.ts - provides menu items for left side nav
+1. packages/react/src/Logo - changes to Gestalt SVG image

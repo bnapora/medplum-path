@@ -67,7 +67,15 @@ async function getUserConfiguration(project: Project, membership: ProjectMembers
     return systemRepo.readReference<UserConfiguration>(membership.userConfiguration);
   }
 
-  const favorites = ['Patient', 'Practitioner', 'Organization', 'ServiceRequest', 'DiagnosticReport', 'Questionnaire'];
+  const favorites = [
+    'Patient',
+    'Practitioner',
+    'ServiceRequest',
+    'DiagnosticReport',
+    'ImagingStudy',
+    'Questionnaire',
+    'Task',
+  ];
 
   const result = {
     resourceType: 'UserConfiguration',
@@ -98,6 +106,8 @@ async function getUserConfiguration(project: Project, membership: ProjectMembers
       link: [
         { name: 'Projects', target: '/Project' },
         { name: 'Super Config', target: '/admin/super' },
+        { name: 'Users', target: '/admin/users' },
+        { name: 'Project Membership', target: '/ProjectMembership' },
       ],
     });
   }

@@ -16,6 +16,9 @@ import {
   IconReportMedical,
   IconStar,
   IconWebhook,
+  IconNotebook,
+  IconList,
+  IconUsers,
 } from '@tabler/icons-react';
 import { Suspense } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
@@ -87,6 +90,9 @@ const resourceTypeToIcon: Record<string, Icon> = {
   Subscription: IconWebhook,
   batch: IconPackages,
   Observation: IconMicroscope,
+  ImagingStudy: IconNotebook,
+  Task: IconList,
+  Users: IconUsers,
 };
 
 function getIcon(to: string): JSX.Element | undefined {
