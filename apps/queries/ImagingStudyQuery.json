@@ -1,0 +1,40 @@
+{
+  ImagingStudyList {
+    resourceType,
+    id,
+    identifier {
+      value
+    }
+    status,
+    numberOfSeries,
+    location {
+      display
+    }
+    procedureCode {
+      coding {
+        display
+      }
+    }
+		series {
+      uid,
+      modality {
+        display
+        code
+        },
+      bodySite {
+        display
+        },
+      started,
+      numberOfInstances
+		}
+    subject {
+      ... on Reference {
+				reference,
+      }
+    }
+    taskid: TaskList(_reference: subject) {
+      resourceType,
+      id
+    }
+  }
+}

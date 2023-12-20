@@ -1,7 +1,8 @@
 import { Space } from '@mantine/core';
 import { MEDPLUM_VERSION } from '@medplum/core';
 import { UserConfiguration } from '@medplum/fhirtypes';
-import { AppShell, Loading, Logo, NavbarMenu, useMedplum } from '@medplum/react';
+import { AppShell, Loading, NavbarMenu, useMedplum } from '@medplum/react';
+import { Logo } from './components/Logo'
 import {
   Icon,
   IconBrandAsana,

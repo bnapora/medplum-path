@@ -90,3 +90,11 @@ ServiceRequest --> DiagnosticReport --> Observation --> (if DICOM) --> ImagingSt
 ### Customizations
 1. packages/server/src/auth/me.ts - provides menu items for left side nav
 1. packages/react/src/Logo - changes to Gestalt SVG image
+
+### CLI Useage
+- Haven't been able to get CLI working
+medplum profile set bnapora-local \
+    --auth-type "basic" \
+    --base-url "http://localhost:8103" \
+    --fhir-url-path "fhir/R4" \
+    --client-id "c89d4997-0084-4f13-8a5a-aa2a8dfee0b3"

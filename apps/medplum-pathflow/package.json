@@ -4,8 +4,10 @@
   "version": "2.0.28",
   "scripts": {
     "dev": "vite --host",
+    "dev:devtools": "vite --host & refine devtools",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "refine": "refine"
   },
   "devDependencies": {
     "@emotion/react": "11.11.1",
@@ -16,7 +18,7 @@
     "@medplum/eslint-config": "2.0.28",
     "@medplum/fhirtypes": "2.0.28",
     "@medplum/react": "2.0.28",
-    "@refinedev/cli": "^2.7.4",
+    "@refinedev/cli": "^2.16.20",
     "@refinedev/inferencer": "^4.3.2",
     "@refinedev/kbar": "^1.1.2",
     "@refinedev/mantine": "^2.5.0",
@@ -44,6 +46,11 @@
   },
   "dependencies": {
     "@refinedev/core": "^4.28.2",
-    "@refinedev/react-router-v6": "^4.5.0"
+    "@refinedev/devtools": "^1.1.28",
+    "@refinedev/react-router-v6": "^4.5.0",
+    "@uiw/react-md-editor": "^3.19.5"
+  },
+  "refine": {
+    "projectId": "fgxuYX-LLjb9a-UHkWW0"
   }
 }

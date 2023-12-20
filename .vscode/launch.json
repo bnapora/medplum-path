@@ -5,6 +5,20 @@
   "version": "0.2.0",
   "configurations": [
       {
+        "type": "msedge",
+        "request": "launch",
+        "name": "Launch Edge - path-medical",
+        "url": "http://localhost:3005",
+        "webRoot": "${workspaceFolder}/apps/app-admin",
+      },
+      {
+        "type": "chrome",
+        "request": "launch",
+        "name": "Launch Chrome - App-Admin",
+        "url": "http://localhost:3001",
+        "webRoot": "${workspaceFolder}/apps/app-admin",
+      },
+      {
           "type": "msedge",
           "request": "launch",
           "name": "Launch Edge - App",

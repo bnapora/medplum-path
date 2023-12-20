@@ -1,5 +1,6 @@
 import { Title } from '@mantine/core';
-import { Logo, SignInForm, useMedplumProfile } from '@medplum/react';
+import { SignInForm, useMedplumProfile } from '@medplum/react';
+import { Logo } from './components/Logo'
 import { useCallback, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getConfig, isRegisterEnabled } from './config';
@@ -33,7 +34,7 @@ export function SignInPage(): JSX.Element {
       projectId={searchParams.get('project') || undefined}
     >
       <Logo size={32} />
-      <Title>Sign in to Medplum</Title>
+      <Title>Sign in to Gestalt PathCloud</Title>
       {searchParams.get('project') === 'new' && <div>Sign in again to create a new project</div>}
     </SignInForm>
   );

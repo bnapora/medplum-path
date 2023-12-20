@@ -1,0 +1,49 @@
+{
+  Patient(id: "e6ba2fea-9661-4881-b1ae-92989e9ca37b") {
+    resourceType,
+    id,
+    birthDate,
+    gender,
+    generalPractitioner { reference },
+    name (use: "official"){ given, family },
+    address { line, city, state }
+    photo { contentType, url, title },
+    AllergyIntoleranceList(_reference: patient, _count: 100, _sort: "-_lastUpdated") {
+      id,
+      meta { lastUpdated },
+      code { coding { code, display } },
+      criticality
+    }
+    ImagingStudyList(_reference: subject, _count: 100) {
+      resourceType,
+      id
+    }
+    ConditionList(_reference: patient, _count: 100, _sort: "-_lastUpdated") {
+      id,
+      meta { lastUpdated },
+      category { coding { code } },
+      clinicalStatus { coding { display } },
+      code { coding { display } },
+      onsetDateTime
+    }
+    MedicationRequestList(_reference: subject, _count: 100, _sort: "-_lastUpdated") {
+      id,
+      status,
+      medicationCodeableConcept { coding { code, display }},
+    }
+    ObservationList(_reference: subject, _count: 100, _sort: "-_lastUpdated") {
+      id,
+      category { coding { code } },
+      code { coding { code, system, display } },
+      valueCodeableConcept { coding { code, display } text },
+      valueQuantity { value, unit },
+      component {
+        code { coding { code, system, display } },
+        valueCodeableConcept { coding { code, display } text },
+        valueQuantity { value, unit },
+      }
+      effectiveDateTime
+    }
+
+  }
+}
