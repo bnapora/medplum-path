@@ -5,6 +5,6 @@ export async function handler(medplum: MedplumClient, event: BotEvent): Promise<
   const patient = event.input as Patient;
   const firstName = patient.name?.[0]?.given?.[0];
   const lastName = patient.name?.[0]?.family;
-  console.log(`Hello ${firstName} ${lastName}!`);
+  console.log(`Hello ${firstName} ${lastName}! Welcome to our Practice.`);
   return true;
 }

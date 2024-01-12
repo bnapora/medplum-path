@@ -21,7 +21,7 @@
   "scripts": {
     "build": "npm run clean && tsc && vite build",
     "clean": "rimraf dist",
-    "dev": "vite --host",
+    "dev": "vite --host --port 3001",
     "source-map-explorer": "source-map-explorer dist/**/*.js --gzip",
     "test": "jest"
   },

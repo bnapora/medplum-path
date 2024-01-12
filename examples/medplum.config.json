@@ -1,0 +1,10 @@
+{
+  "bots": [
+    {
+      "name": "sample-account-setup",
+      "id": "fbdf29fc-b9c6-4709-baad-1deba23f6671",
+      "source": "src/sample-account-setup.ts",
+      "dist": "dist/sample-account-setup.js"
+    }
+  ]
+}

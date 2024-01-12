@@ -83,6 +83,42 @@
       "id": "",
       "source": "./src/bots-with-shared-library/goodbye-patient.ts",
       "dist": "./dist/bots-with-shared-library/welcome-patient.js"
+    },
+    {
+      "name": "sample-account-setup",
+      "id": "dab9eda2-d129-4b03-8b20-cac514ed8136",
+      "source": "sample-account-setup.ts",
+      "dist": "./dist/sample-account-setup.js"
+    },
+    {
+      "name": "sample-account-setup",
+      "id": "2603817e-7e9b-47ba-9d48-8498a191e211",
+      "source": "sample-account-setup.ts",
+      "dist": "./dist/sample-account-setup.js"
+    },
+    {
+      "name": "sample-account-setup",
+      "id": "0a9af3b3-a96f-4c07-96c7-358850b02909",
+      "source": "src/sample-account-setup.ts",
+      "dist": "dist/sample-account-setup.js"
+    },
+    {
+      "name": "hello-patient",
+      "id": "9757071e-c092-4312-8d5a-8c3c33c8f85b",
+      "source": "src/hello-patient.ts",
+      "dist": "dist/hello-patient.js"
+    },
+    {
+      "name": "sample-account-setup",
+      "id": "4bbf253e-f723-4e2a-bc89-f7629174799f",
+      "source": "src/sample-account-setup.ts",
+      "dist": "dist/sample-account-setup.js"
+    },
+    {
+      "name": "sample-account-setup",
+      "id": "de60681e-cf67-4aa9-a5b0-d85e5dc608c5",
+      "source": "src/sample-account-setup.ts",
+      "dist": "dist/sample-account-setup.js"
     }
   ]
 }

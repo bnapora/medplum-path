@@ -92,9 +92,15 @@ ServiceRequest --> DiagnosticReport --> Observation --> (if DICOM) --> ImagingSt
 1. packages/react/src/Logo - changes to Gestalt SVG image
 
 ### CLI Useage
-- Haven't been able to get CLI working
-medplum profile set bnapora-local \
+
+medplum login \
     --auth-type "basic" \
     --base-url "http://localhost:8103" \
-    --fhir-url-path "fhir/R4" \
-    --client-id "c89d4997-0084-4f13-8a5a-aa2a8dfee0b3"
+    --fhir-url-path "/fhir/R4" \
+    --client-id "dea997cc-8954-4787-a193-d2450f86009e" \
+    --client-secret "cfdacdb6e518f9f439463d24baf2fde5234407ddbd70573a254cc4e76c3b49a2"
+
+- tested retrieving a patient and seemed to work after running `medplum login` command above
+medplum get --base-url http://localhost:8103 'Patient/628f2bbb-865b-4ef6-935d-7d6ac3ea3493'
+
+### Configure compose file with all services and applications (011124)

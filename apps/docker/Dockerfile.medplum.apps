@@ -1,0 +1,28 @@
+FROM node:18-bullseye-slim
+
+WORKDIR /app
+
+COPY package-lock.json /app/
+COPY package.json /app/
+COPY packages /app/packages
+COPY scripts /app/scripts
+
+RUN npm ci
+
+COPY turbo.json /app/
+COPY tsconfig.json /app/
+COPY tsdoc.json /app/
+COPY api-extractor.json /app/
+
+RUN npm run build:fast
+
+COPY /apps/path-medical /app/path-medical
+COPY /apps/app-admin /app/app-admin
+# COPY /examples /app/examples
+
+COPY /apps/docker/entrypoint-apps.sh /app/entrypoint.sh
+RUN chmod 0700 /app/entrypoint.sh
+
+
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
+

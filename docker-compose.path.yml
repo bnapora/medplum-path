@@ -4,10 +4,32 @@
 #   2) The Redis cache
 # You can start all services by running "docker-compose up"
 version: '3.7'
-name: medplum-pathflow
+name: pathcloud-medplum
 services:
-  postgres:
-    container_name: medplum-db
+  apps:
+    container_name: apps
+    build:
+      dockerfile: ./apps/docker/Dockerfile.medplum.apps
+    # command: /bin/sh -c "/app/entrypoint.sh"
+    command:
+      - /bin/bash 
+      - -c 
+      - |
+        cd app-admin && npm run dev
+    ports:
+      - 3001:3001
+      - 3005:3005
+    depends_on: [medplum] 
+  medplum:
+    container_name: medplum
+    build:
+      dockerfile: ./apps/docker/Dockerfile.medplum.server
+    command: npm start
+    ports:
+      - 8103:8103
+    depends_on: [medplum-db2, medplum-redis2] 
+  medplum-db2:
+    container_name: medplum-db2
     image: postgres:12
     restart: always
     environment:
@@ -16,16 +38,16 @@ services:
     volumes:
       - ./postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf
       - ./postgres/:/docker-entrypoint-initdb.d/
-      - postgres_medplum-path:/var/lib/postgresql/data
+      - postgres_medplum-path2:/var/lib/postgresql/data
     command: postgres -c config_file=/usr/local/etc/postgres/postgres.conf
     ports:
       - '5432:5432'
-  redis:
+  medplum-redis2:
     image: redis:6
-    container_name: medplum-redis
+    container_name: medplum-redis2
     restart: always
     command: redis-server --requirepass medplum
     ports:
       - '6379:6379'
 volumes:
-  postgres_medplum-path: {}
+  postgres_medplum-path2: {}
