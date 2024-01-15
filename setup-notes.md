@@ -104,3 +104,7 @@ medplum login \
 medplum get --base-url http://localhost:8103 'Patient/628f2bbb-865b-4ef6-935d-7d6ac3ea3493'
 
 ### Configure compose file with all services and applications (011124)
+1. Create compose application `docker-compose.path.yml`
+
+* Configure GCP VM
+1. Install docker
