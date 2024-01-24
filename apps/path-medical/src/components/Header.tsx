@@ -91,7 +91,7 @@ const navigation = [
   { name: 'Worklists', href: '/health-record' },
   { name: 'My Tasks', href: '/messages' },
   { name: 'Clinical', href: '/care-plan' },
-  { name: 'Discover', href: '/get-care' },
+  { name: 'Copilot', href: '/get-care' },
 ];
 
 export function Header(): JSX.Element {

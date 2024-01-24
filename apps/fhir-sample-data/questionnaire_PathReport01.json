@@ -1,0 +1,48 @@
+{
+  "resourceType": "Questionnaire",
+  "name": "PathologyReportTemplate01",
+  "title": "Pathology Report",
+  "status": "active",
+  "date": "2024-01-17T21:56:00.000Z",
+  "id": "fcd2e046-7ce5-4465-8666-dbff8dac3506",
+  "meta": {
+    "project": "a901473b-1de6-4946-abe0-14c131649b68",
+    "compartment": [
+      {
+        "reference": "Project/a901473b-1de6-4946-abe0-14c131649b68"
+      }
+    ],
+    "versionId": "2eb62cb7-9822-47c5-b9b8-661fed7b8a90",
+    "lastUpdated": "2024-01-17T22:02:54.950Z",
+    "author": {
+      "reference": "Practitioner/b6105197-bc29-4aee-8b59-a31d1bede66b",
+      "display": "Brian Napora"
+    }
+  },
+  "item": [
+    {
+      "id": "id-2",
+      "linkId": "qClinicalDescription",
+      "type": "string",
+      "text": "Clinical Description:"
+    },
+    {
+      "id": "id-3",
+      "linkId": "qGrossDescription",
+      "type": "string",
+      "text": "Gross Description:"
+    },
+    {
+      "id": "id-4",
+      "linkId": "qDiagnosis",
+      "type": "string",
+      "text": "Diagnosis:"
+    },
+    {
+      "id": "id-5",
+      "linkId": "qMicroscopic",
+      "type": "string",
+      "text": "Microscopic:"
+    }
+  ]
+}

@@ -42,27 +42,37 @@ export function CasesPath(): JSX.Element {
             <th>Slides</th>
             <th><IconCalendar size={16} style={{ marginRight: 4 }} />Available Date</th>
             <th>Report</th>
+
           </tr>
         </thead>
         <tbody>
           {imagingstudies.map((imagingstudy) => (
             <tr key={imagingstudy.id}>
               <td>
-                
-                <Anchor 
-                  target='_child'
-                  // href={`http://localhost:3000/microscopy?StudyInstanceUIDs=${imagingstudy.identifier[0].value?.substring(9)}`}
-                  // href={`http://localhost:3000/viewer?StudyInstanceUIDs=1.2.826.0.1.3680043.8.274.1.1.296485632.14350.1699696091.334464`}   
-                  href={`https://azvm-mlops-b8.westus2.cloudapp.azure.com/annotations/234/`}             
-                >
-                  <IconPolaroid size={30} style={{ marginRight: 1 }} />
-                </Anchor>
-                
+                {
+                  imagingstudy.series[0].modality?.code == 'SM' ? (
+                    <Anchor 
+                      target='_child'
+                      href={`https://azvm-mlops-b8.westus2.cloudapp.azure.com/annotations/234/`}             
+                    >
+                      <IconPolaroid size={30} style={{ marginRight: 1 }} />
+                    </Anchor>
+                  ) : (
+                    <Anchor 
+                      target='_child'
+                      // href={`http://localhost/ohif/microscopy?StudyInstanceUIDs=1.2.276.0.7230010.3.1.2.875770937.1.1701420428.448952`}             
+                      href={'http://localhost:3000/viewer?StudyInstanceUIDs=1.2.826.0.1.3680043.8.274.1.1.296485632.14350.1699696091.334464'}
+                    >
+                      <IconPolaroid size={30} style={{ marginRight: 1 }} />
+                    </Anchor>
+                  )
+                }  
               </td>
               <td>
                 {imagingstudy.series[0].modality?.display}
               </td>
-              <td>{imagingstudy.procedureCode[0].coding[0].display}</td>
+              {/* <td>{imagingstudy.procedureCode[0].coding[0]?.display}</td> */}
+              <td>NA</td>
               <td>
                 <StatusBadge status={imagingstudy.status as string} />
               </td>
@@ -70,7 +80,7 @@ export function CasesPath(): JSX.Element {
                 {imagingstudy.location?.display}
               </td>
               <td>
-                {imagingstudy.numberOfSeries}
+                {imagingstudy?.numberOfSeries}
               </td>
               <td>
                 {formatDate(imagingstudy.meta?.lastUpdated)}

@@ -58,18 +58,18 @@ services:
     # ports:
     #   - '6379:6379'
 
-  nginx:
-    # image: nginx:latest
-    build: 
-        context: ./nginx
-        dockerfile: Dockerfile.ssl
-    volumes:
-      - /mnt/datadrive/workspace/medplum-path/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /mnt/datadrive/workspace/medplum-path/nginx/conf.d:/etc/nginx/conf.d
-      - /mnt/datadrive/workspace/medplum-path/nginx/index.html:/usr/share/nginx/html/index.html
-    restart: unless-stopped
-    ports: 
-      - 80:80
-      - 443:443
+  # nginx:
+  #   # image: nginx:latest
+  #   build: 
+  #       context: ./nginx
+  #       dockerfile: Dockerfile.ssl
+  #   volumes:
+  #     - /mnt/datadrive/workspace/medplum-path/nginx/nginx.conf:/etc/nginx/nginx.conf
+  #     - /mnt/datadrive/workspace/medplum-path/nginx/conf.d:/etc/nginx/conf.d
+  #     - /mnt/datadrive/workspace/medplum-path/nginx/index.html:/usr/share/nginx/html/index.html
+  #   restart: unless-stopped
+  #   ports: 
+  #     - 80:80
+  #     - 443:443
 volumes:
   postgres_medplum-path: {}

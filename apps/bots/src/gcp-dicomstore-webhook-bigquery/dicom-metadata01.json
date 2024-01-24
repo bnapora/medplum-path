@@ -1,0 +1,39 @@
+[{
+  "max_dt": "2024-01-23 21:50:33.352320 UTC",
+  "StudyInstanceUID": "1.2.826.0.1.3680043.8.498.82621352484651007327778332284894343429",
+  "AccessionNumber": "SVS-TIF-NDPI-DCM",
+  "StudyID": "5-Combi",
+  "StudyDate": null,
+  "StudyTime": null,
+  "ImageType": ["ORIGINAL", "PRIMARY", "VOLUME", "RESAMPLED"],
+  "TransferSyntaxUID": "1.2.840.10008.1.2.4.50",
+  "Modality": "SM",
+  "Manufacturer": "Unknown",
+  "ReferringPhysicianName_Alpha": {
+    "FamilyName": "Combi WSI",
+    "GivenName": null,
+    "MiddleName": null,
+    "NamePrefix": null,
+    "NameSuffix": null
+  },
+  "StudyDescription": null,
+  "SeriesDescription": null,
+  "PatientName_Alpha": {
+    "FamilyName": "Five WSI",
+    "GivenName": null,
+    "MiddleName": null,
+    "NamePrefix": null,
+    "NameSuffix": null
+  },
+  "PatientID": "CM-0008",
+  "PatientBirthDate": null,
+  "PatientSex": null,
+  "SeriesInstanceUID": "1.2.826.0.1.3680043.8.498.10554939809237388012375224861525298441",
+  "SeriesNumber": null,
+  "SOPClassUID": "1.2.840.10008.5.1.4.1.1.77.1.6",
+  "SOPInstanceUID": "1.2.826.0.1.3680043.8.498.75645955057998447880898671763092855767",
+  "InstanceNumber": "1",
+  "TypeUpdate": "CREATE",
+  "LastUpdated": "2024-01-23 21:50:33.352320 UTC",
+  "ImageComments": null
+}]

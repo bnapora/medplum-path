@@ -1,5 +1,6 @@
 import { Schedule } from '@medplum/fhirtypes';
 import { Document, Scheduler, useMedplum } from '@medplum/react';
+import { ChatGpt } from '../components/ChatGpt';
 
 export function GetCare(): JSX.Element {
   const medplum = useMedplum();
@@ -8,7 +9,7 @@ export function GetCare(): JSX.Element {
   return (
     <Document width={800}>
       <div>
-        <h1>Medical Education - AI Chatbot</h1>
+        <ChatGpt />
       </div>
     </Document>
   );

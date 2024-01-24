@@ -1,0 +1,83 @@
+{
+  "resourceType": "ImagingStudy",
+  "id": "dab447e5-cfad-4c76-b7b0-0f451f985106",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:1.2.840.99999999.63131656.893996839287"
+    }
+  ],
+  "status": "available",
+  "subject": {
+    "reference": "Patient/86426d51-e4c6-4000-971d-1e1c87fd7260"
+  },
+  "encounter": {
+    "reference": "Encounter/c7eee158-b750-4230-8d16-656bf489f343"
+  },
+  "started": "1998-05-01T00:27:19-04:00",
+  "numberOfSeries": 1,
+  "numberOfInstances": 1,
+  "procedureCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "40701008",
+          "display": "Echocardiography (procedure)"
+        }
+      ],
+      "text": "Echocardiography (procedure)"
+    }
+  ],
+  "location": {
+    "reference": "Location?identifier=https://github.com/synthetichealth/synthea|9fad6955-7f91-34dd-80c4-997e5e173651",
+    "display": "SOUTH SHORE HOSPITAL"
+  },
+  "series": [
+    {
+      "uid": "1.2.840.99999999.1.83752523.893996839287",
+      "number": 1,
+      "modality": {
+        "system": "http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html",
+        "code": "US",
+        "display": "Ultrasound"
+      },
+      "numberOfInstances": 1,
+      "bodySite": {
+        "system": "http://snomed.info/sct",
+        "code": "80891009",
+        "display": "Heart structure (body structure)"
+      },
+      "started": "1998-05-01T00:27:19-04:00",
+      "instance": [
+        {
+          "uid": "1.2.840.99999999.1.1.46043962.893996839287",
+          "sopClass": {
+            "system": "urn:ietf:rfc:3986",
+            "code": "1.2.840.10008.5.1.4.1.1.3.1"
+          },
+          "number": 1,
+          "title": "Ultrasound Multiframe Image Storage"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "versionId": "629a390f-0c1c-40a2-a80c-23a7b9f8ad05",
+    "lastUpdated": "2024-01-17T00:29:31.307Z",
+    "author": {
+      "reference": "Practitioner/51e37777-b977-41bd-9e6c-face9b8f3de2",
+      "display": "Medplum Admin"
+    },
+    "project": "52f8fa5b-44a3-4973-9f36-c6ac3fe5ba6f",
+    "compartment": [
+      {
+        "reference": "Project/52f8fa5b-44a3-4973-9f36-c6ac3fe5ba6f"
+      },
+      {
+        "reference": "Patient/86426d51-e4c6-4000-971d-1e1c87fd7260"
+      }
+    ]
+  }
+}
