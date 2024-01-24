@@ -2,8 +2,8 @@ import { BotEvent, MedplumClient } from '@medplum/core';
 import { ImagingStudy } from '@medplum/fhirtypes';
 import { BigQuery } from '@google-cloud/bigquery';
 
-const keyFilePath = '/home/bnapora/development/medplum/medplum-path/apps/bots/src/gcp-dicomstore-webhook-bigquery/svc_account_key/key_medplum-bot-poc1-pathology_gcp-pathology-poc1-0097c5eb541b.json';
-// const keyFilePath = '/app/bots/key_medplum-bot-poc1-pathology_gcp-pathology-poc1-0097c5eb541b.json';
+// const keyFilePath = '/home/bnapora/development/medplum/medplum-path/apps/bots/src/gcp-dicomstore-webhook-bigquery/svc_account_key/key_medplum-bot-poc1-pathology_gcp-pathology-poc1-0097c5eb541b.json';
+const keyFilePath = '/app/bots/gcp-dicomstore-webhook-bigquery/svc_account_key/key_medplum-bot-poc1-pathology_gcp-pathology-poc1-0097c5eb541b.json';
 const options = {
     keyFilename: keyFilePath,
     projectId: 'gcp-pathology-poc1',
@@ -21,14 +21,14 @@ const convertDelimitedStrToObject = string =>
     }, {});
 
 export async function handler(medplum: MedplumClient, event: BotEvent): Promise<any> {
-  // const input = event.input;
-  // const pubsubmsg=String(input['data']['payload']);
+  const input = event.input;
+  const pubsubmsg=String(input['data']['payload']);
 // async function query() {
   //Sample DCM: 5 Series Multi-Image 
   // const input = 'projects/gcp-pathology-poc1/locations/us-west2/datasets/dicom-pathology/dicomStores/slide-dicom-store/dicomWeb/studies/1.2.826.0.1.3680043.8.498.82621352484651007327778332284894343429/series/1.2.826.0.1.3680043.8.498.10554939809237388012375224861525298441/instances/1.2.826.0.1.3680043.8.498.75645955057998447880898671763092855767';
   // const input = 'projects/gcp-pathology-poc1/locations/us-west2/datasets/dicom-pathology/dicomStores/slide-dicom-store/dicomWeb/studies/1.2.826.0.1.3680043.8.498.82621352484651007327778332284894343429/series/1.2.826.0.1.3680043.8.498.10554939809237388012375224861525298441/instances/1.2.826.0.1.3680043.8.498.72603895181685033856738031817401027997';
   // const input = 'projects/gcp-pathology-poc1/locations/us-west2/datasets/dicom-pathology/dicomStores/slide-dicom-store/dicomWeb/studies/1.2.826.0.1.3680043.8.498.82621352484651007327778332284894343429/series/1.2.826.0.1.3680043.8.498.10554939809237388012375224861525298441/instances/1.2.826.0.1.3680043.8.498.49844264710078562317141996282957073131';
-  const input = 'projects/gcp-pathology-poc1/locations/us-west2/datasets/dicom-pathology/dicomStores/slide-dicom-store/dicomWeb/studies/1.2.826.0.1.3680043.8.498.82621352484651007327778332284894343429/series/1.2.826.0.1.3680043.8.498.20753633745529569179908068644091507541/instances/1.2.826.0.1.3680043.8.498.73777438350201928712934893491207911548';
+  // const input = 'projects/gcp-pathology-poc1/locations/us-west2/datasets/dicom-pathology/dicomStores/slide-dicom-store/dicomWeb/studies/1.2.826.0.1.3680043.8.498.82621352484651007327778332284894343429/series/1.2.826.0.1.3680043.8.498.20753633745529569179908068644091507541/instances/1.2.826.0.1.3680043.8.498.73777438350201928712934893491207911548';
   // const input = 'projects/gcp-pathology-poc1/locations/us-west2/datasets/dicom-pathology/dicomStores/slide-dicom-store/dicomWeb/studies/1.2.826.0.1.3680043.8.498.82621352484651007327778332284894343429/series/1.2.826.0.1.3680043.8.498.20753633745529569179908068644091507541/instances/1.2.826.0.1.3680043.8.498.67268449332737763118398728475596725882';
 
   //Sample DCM: 7 Instances (Jimmy Stewart)
@@ -40,9 +40,9 @@ export async function handler(medplum: MedplumClient, event: BotEvent): Promise<
   
   //Sample DCM: green-square
   // const input = 'projects/gcp-pathology-poc1/locations/us-west2/datasets/dicom-pathology/dicomStores/slide-dicom-store/dicomWeb/studies/1.2.826.0.1.3680043.8.498.13230779778012324449356534479549187420/series/1.2.826.0.1.3680043.8.498.45787841905473114233124723359129632652/instances/1.2.276.0.7230010.3.1.4.1647338594.1.1705691905.664899';
-  const pubsubmsg = input;
+  // const pubsubmsg = input;
   
-  // console.log('pubsubmsg=', pubsubmsg);
+  console.log('pubsubmsg=', pubsubmsg);
   
   const pubsubmsgJSON = convertDelimitedStrToObject(pubsubmsg);
 
