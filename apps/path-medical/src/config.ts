@@ -5,8 +5,31 @@
 // export const MEDPLUM_RECAPTCHA_SITE_KEY = '6LfFd_8gAAAAAOCVrZQ_aF2CN5b7s91NEYIu5GxL';
 
 // Local Medplum Configs
-// export const MEDPLUM_BASE_URL = 'http://localhost:8103/';
-export const MEDPLUM_PROJECT_ID = 'a901473b-1de6-4946-abe0-14c131649b68';
-export const MEDPLUM_GOOGLE_CLIENT_ID = '705265833508-emhk0k9fuuakpaarj0rp81uql03pqlvn.apps.googleusercontent.com';
-export const MEDPLUM_RECAPTCHA_SITE_KEY = '6LdBKjYnAAAAAKOE_QaBQRb7_6yd8Tv-PKRoe8WX';
 export const MEDPLUM_PATIENT_ID = 'd8cde688-3bb8-462c-89d0-7ed7744a5bf7'
+
+export interface MedplumAppConfig {
+  baseUrl?: string;
+  clientId?: string;
+  projectId?: string;
+  googleClientId?: string;
+  recaptchaSiteKey?: string;
+  registerEnabled?: boolean | string;
+}
+
+const config: MedplumAppConfig = {
+  baseUrl: import.meta.env?.MEDPLUM_BASE_URL,
+  clientId: import.meta.env?.MEDPLUM_CLIENT_ID,
+  projectId: import.meta.env?.MEDPLUM_PROJECT_ID,
+  googleClientId: import.meta.env?.GOOGLE_CLIENT_ID,
+  recaptchaSiteKey: import.meta.env?.RECAPTCHA_SITE_KEY,
+  registerEnabled: import.meta.env?.MEDPLUM_REGISTER_ENABLED,
+};
+
+export function getConfig(): MedplumAppConfig {
+  return config;
+}
+
+export function isRegisterEnabled(): boolean {
+  // Default to true
+  return config.registerEnabled !== false && config.registerEnabled !== 'false';
+}

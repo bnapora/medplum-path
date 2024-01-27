@@ -103,4 +103,8 @@ medplum login \
 - tested retrieving a patient and seemed to work after running `medplum login` command above
 medplum get --base-url http://localhost:8103 'Patient/628f2bbb-865b-4ef6-935d-7d6ac3ea3493'
 
-### Configure compose file with all services and applications (011124)
+### Setup Google Auth
+- use https://www.medplum.com/docs/auth/methods/google-auth
+- need to make sure both 
+- need to add googleClientId and googleClientSecret to Medplum Project "Site" before auth will work
+- in Google Auth credentials config, need to make sure Javascript origins and authorized redirect URI's are populated with correct domain

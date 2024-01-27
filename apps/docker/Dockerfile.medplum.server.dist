@@ -1,0 +1,16 @@
+FROM node:18-bullseye
+ARG MEDPLUM_CONFIG_FILE
+
+WORKDIR /app
+
+COPY packages/server/package.json /app/package.json
+RUN npm i
+
+COPY packages/server/dist /app/dist
+COPY packages/server/${MEDPLUM_CONFIG_FILE} /app/medplum.config.json
+COPY tsconfig.json /app/tsconfig.json
+
+
+# CMD ["npm", "start"]
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]

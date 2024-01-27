@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  viewer-ohif:
+    build: 
+      context: ./app-containers/viewer-ohif
+      dockerfile: ./container/Dockerfile
+      args: 
+        PUBLIC_URL: /viewer/
+        QUICK_BUILD: true
+    volumes:
+      - ./app-containers/viewer-ohif/repo-viewer-ohif/platform/app/public/config/pathcloud_local.js:/usr/share/nginx/html/app-config.js
+
+    restart: unless-stopped
+    expose: [80]
+    ports:
+      - 3010:80
+  # ohif:
+  #   build: 
+  #     context: ./app-containers/viewer-ohif/ohif
+  #     dockerfile: Dockerfile
+  #     args: 
+  #       PUBLIC_URL: /ohif/
+  #       QUICK_BUILD: true
+  #   restart: unless-stopped
+  #   expose:
+  #     - 80
+  #   ports:
+  #     - 3010:80

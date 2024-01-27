@@ -9,7 +9,7 @@ import { LandingPage } from './pages/landing';
 import { RegisterPage } from './pages/RegisterPage';
 import { SignInPage } from './pages/SignInPage';
 import { Router } from './Router';
-import { MEDPLUM_PATIENT_ID } from '../config';
+import { MEDPLUM_PATIENT_ID } from './config';
 
 export function App(): JSX.Element | null {
   const location = useLocation();

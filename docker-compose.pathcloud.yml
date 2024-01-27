@@ -25,7 +25,8 @@ services:
       dockerfile: ./apps/docker/Dockerfile.medplum.server
     command: npm start
     volumes:
-      - /mnt/datadrive/workspace/medplum-path/apps/bots/src/gcp-dicomstore-webhook-bigquery:/app/bots/gcp-dicomstore-webhook-bigquery
+      # - /mnt/datadrive/workspace/medplum-path/apps/bots/src/gcp-dicomstore-webhook-bigquery:/app/bots/gcp-dicomstore-webhook-bigquery
+      - ./apps/bots/src/gcp-dicomstore-webhook-bigquery:/app/bots/gcp-dicomstore-webhook-bigquery
     expose: 
       - 80
       - 8103
@@ -40,31 +41,31 @@ services:
       - POSTGRES_USER=medplum
       - POSTGRES_PASSWORD=medplum
     volumes:
-      - /mnt/datadrive/workspace/medplum-path/postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf
-      - /mnt/datadrive/workspace/medplum-path/postgres/:/docker-entrypoint-initdb.d/
+      - ./postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf
+      - ./postgres/:/docker-entrypoint-initdb.d/
       - postgres_medplum-path:/var/lib/postgresql/data
     command: postgres -c config_file=/usr/local/etc/postgres/postgres.conf
     expose: [5432]
-    # ports:
-    #   - '5432:5432'
+    ports:
+      - '5432:5432'
   medplum-redis:
     image: redis:6
     container_name: medplum-redis
     restart: always
     command: redis-server --requirepass medplum
     expose: [6379]
-    # ports:
-    #   - '6379:6379'
+    ports:
+      - '6379:6379'
 
   nginx:
-    # image: nginx:latest
     build: 
         context: ./nginx
         dockerfile: Dockerfile.ssl
+    container_name: nginx
     volumes:
-      - /mnt/datadrive/workspace/medplum-path/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /mnt/datadrive/workspace/medplum-path/nginx/conf.d:/etc/nginx/conf.d
-      - /mnt/datadrive/workspace/medplum-path/nginx/index.html:/usr/share/nginx/html/index.html
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/index.html:/usr/share/nginx/html/index.html
     restart: unless-stopped
     ports: 
       - 80:80
