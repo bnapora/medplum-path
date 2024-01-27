@@ -17,7 +17,6 @@ export function RegisterPage(): JSX.Element {
           googleClientId={config.googleClientId}
           recaptchaSiteKey={config.recaptchaSiteKey}
           onSuccess={() => navigate('/')}
-          onRegister={isRegisterEnabled() ? () => navigate('/register') : undefined}
         >
           <h2>Register with Gestalt PathCloud</h2>
         </RegisterForm>

@@ -3,19 +3,25 @@ include:
   - ./app-containers/orthanc/docker-compose.orthanc.yml
   - ./app-containers/viewer-ohif/docker-compose.viewer-ohif.yml
 services:
-  # # OHIF Viewer
-  # viewer-ohif:
-  #   container_name: viewer-ohif
+  # apps:
+  #   container_name: apps
   #   build:
-  #     dockerfile: ./app-containers/Viewer-OHIF/container/Dockerfile
-  #     args: 
-  #         PUBLIC_URL: /ohif/
-  #         QUICK_BUILD: true
-  #   volumes:
-  #     - ./app-containers/Viewer-OHIF/container/public/config/default-ohif-config.js:/usr/share/nginx/html/app-config.js
-  #   expose: [80]
+  #     dockerfile: ./apps/docker/Dockerfile.medplum.apps
+  #   # command: /bin/sh -c "/app/entrypoint.sh"
+  #   command:
+  #     - /bin/bash 
+  #     - -c 
+  #     - |
+  #       cd app-admin && npm run dev
+    
+  #   expose: 
+  #     - 3001
+  #     - 3005
+  #   ports:
+  #     - 3001:3001
+  #     - 3005:3005
+  #   depends_on: [medplum] 
 
-  # Admin App Distribution Files Only
   app-admin:
     container_name: app-admin
     profiles: [applications]
@@ -30,7 +36,6 @@ services:
     ports:
       - 3001:80
 
-  # Admin App Distribution Files Only
   app-pathcloud:
     container_name: app-pathcloud
     profiles: [applications]
@@ -84,12 +89,14 @@ services:
       - ./postgres/:/docker-entrypoint-initdb.d/
       - postgres_medplum_localhost:/var/lib/postgresql/data
     command: postgres -c config_file=/usr/local/etc/postgres/postgres.conf
+    expose: [5432]
     ports:
       - '5432:5432'
   redis:
     image: redis:6
     restart: always
     command: redis-server --requirepass medplum
+    expose: [6379]
     ports:
       - '6379:6379'
   nginx:

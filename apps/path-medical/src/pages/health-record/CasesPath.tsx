@@ -12,6 +12,9 @@ import { useNavigate } from 'react-router-dom';
 import { InfoButton, InfoSection, SoapNote, QuestionnairePathReport } from '../../components';
 import PillsImage from '../../img/pills.svg';
 
+import { getConfig } from '../../config';
+const config = getConfig();
+
 
 export function CasesPath(): JSX.Element {
   const medplum = useMedplum();
@@ -53,15 +56,14 @@ export function CasesPath(): JSX.Element {
                   imagingstudy.series[0].modality?.code == 'SM' ? (
                     <Anchor 
                       target='_child'
-                      href={`https://azvm-mlops-b8.westus2.cloudapp.azure.com/annotations/234/`}             
+                      href={`http://localhost/viewer/microscopy?StudyInstanceUIDs=` + imagingstudy.identifier[0].value.replace('urn:oid:','')}           
                     >
                       <IconPolaroid size={30} style={{ marginRight: 1 }} />
                     </Anchor>
                   ) : (
                     <Anchor 
-                      target='_child'
-                      // href={`http://localhost/ohif/microscopy?StudyInstanceUIDs=1.2.276.0.7230010.3.1.2.875770937.1.1701420428.448952`}             
-                      href={'http://localhost:3000/viewer?StudyInstanceUIDs=1.2.826.0.1.3680043.8.274.1.1.296485632.14350.1699696091.334464'}
+                      target='_top'            
+                      href={`http://localhost/viewer/viewer?StudyInstanceUIDs=`+ imagingstudy.identifier[0].value.replace('urn:oid:','')}   
                     >
                       <IconPolaroid size={30} style={{ marginRight: 1 }} />
                     </Anchor>
