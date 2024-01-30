@@ -5,10 +5,16 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
+import { getConfig } from './config';
+
+const config = getConfig();
 
 const medplum = new MedplumClient({
   onUnauthenticated: () => (window.location.href = '/'),
-  baseUrl: 'https://app.poc1.gestaltcloud.com/v1.0/', //Uncomment this to run against the server on your localhost
+  baseUrl: config.baseUrl,
+  clientId: config.clientId,
+  cacheTime: 60000,
+  autoBatchTime: 100,
 });
 
 const theme: MantineThemeOverride = {

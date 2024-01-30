@@ -1,0 +1,121 @@
+{
+  "Name" : "${ORTHANC_NAME} in Docker Compose",
+  "RegisteredUsers": {
+    "demo": "demo"
+  },
+  "RemoteAccessAllowed" : true,
+  "StorageDirectory" : "/var/lib/orthanc/db",
+  "Plugins" : [ 
+    "/usr/share/orthanc/plugins",
+    "/usr/share/orthanc/plugins-available/libOrthancGoogleCloudPlatform.so"
+  ],
+  "AuthenticationEnabled" : false,
+  "DefaultEncoding" : "Utf8",
+  "HttpPort" : 8042,
+  "DicomAet" : "ORTHANC",
+  "DicomPort" : 4242,
+  "DicomModalities" : {
+  },
+  "DeflatedTransferSyntaxAccepted": true,
+  "JpegTransferSyntaxAccepted": true,
+  "Jpeg2000TransferSyntaxAccepted": true,
+  "JpegLosslessTransferSyntaxAccepted": true,
+  "JpipTransferSyntaxAccepted": true,
+  "Mpeg2TransferSyntaxAccepted": true,
+  "RleTransferSyntaxAccepted": true,
+  "UnknownSopClassAccepted": false,
+  "HttpsVerifyPeers" : false,
+  "HttpVerbose": true,
+  "WholeSlideImaging" : {
+    "EnableIIIF" : true,           
+    "OrthancPublicURL" : "http://localhost/pacs/",
+    "ServeMirador" : true,        
+    "ServeOpenSeadragon" : true,  
+    "ForcePowersOfTwoScaleFactors" : true   
+  },
+  "DicomWeb" : {
+    "Enable" : true,
+    "Root" : "/dicom-web/",
+    "PublicRoot": "/dicom-web/",
+    "BaseRetrieveURL": "/pacs/dicom-web/",
+    "StudiesMetadata" : "Full", 
+    "SeriesMetadata" : "Full",
+    "DefaultEncoding" : "Utf8",
+    "MetadataWorkerThreadsCount": 4,
+    "Servers" : {
+      "dcm4chee-azMLOps" : {
+        "URL" : "https://azvm-mlops-b8.westus2.cloudapp.azure.com/dcm4chee-arc/aets/DCM4CHEE/rs/",
+        "HasDelete" : true
+      },
+      "az-dicom-server" : {
+        "URL" : "https://dicom-rnd01.azurewebsites.net/v2/",
+        "HasDelete" : true
+      },
+      "IDC-DCM4CHEE-SLIM" : {
+        "URL" : "https://idc-external-006.uc.r.appspot.com/dcm4chee-arc/aets/DCM4CHEE/rs",
+        "HasDelete" : false,
+        "ChunkedTransfers": true,
+        "HasWadoRsUniversalTransferSyntax" : true,
+        "HttpHeaders": {
+          "Accept":"application/dicom+json"
+        }
+      },
+      "IDC-PUBLIC" : {
+        "URL" : "https://proxy.imaging.datacommons.cancer.gov/current/viewer-only-no-downloads-see-tinyurl-dot-com-slash-3j3d9jyp/dicomWeb",
+        "HasDelete" : false
+      }
+    }
+  },
+  "OrthancExplorer2" : {
+    "Enable": true,
+    "IsDefaultOrthancUI": true,
+    "UIOptions.EnableOpenInOHIFViewer3": true,
+    "UIOptions.OHIFViewer3PublicRoot": "http://localhost/pacs/ohif/"
+  },
+  "Housekeeper": {
+    "Enable": false,
+    "GlobalPropertyId": 1025,
+    "Force": false,
+    "ThrottleDelay": 5,
+    "Triggers" : {
+      "StorageCompressionChange": true,
+      "MainDicomTagsChange": true,
+      "UnnecessaryDicomAsJsonFiles": true,
+      "IngestTranscodingChange": true,
+      "DicomWebCacheChange": true   
+    }
+  },
+  "GoogleCloudPlatform" : {
+    "Accounts": {
+      "gcp-pathcloud-poc1" : {
+        "Project" : "gcp-pathology-poc1",
+        "Location" : "us-west2",
+        "Dataset" : "dicom-pathology",
+        "DicomStore" : "slide-dicom-store",
+        "ServiceAccountFile" : "/usr/share/orthanc/plugins-config/gcp-pathology-poc1_service_key.json"
+      }
+    },
+    // "BaseUrl" : "https://poc1.gestaltcloud.com/tile/"
+    "BaseUrl" : "https://healthcare.googleapis.com/v1/"
+  }
+  // "GoogleCloudPlatform" : {
+  //   "Accounts": {
+  //     "gcp-wsi-dicom-rnd" : {
+  //       "Project" : "wsi-dicom-rnd",
+  //       "Location" : "us-west2",
+  //       "Dataset" : "DICOM-RND",
+  //       "DicomStore" : "gs-dicomWSI-01",
+  //       "ServiceAccountFile" : "/usr/share/orthanc/plugins-config/gcp-wsi-dicom-rnd.json"
+  //     }
+  //   },
+  //   "BaseUrl" : "https://healthcare.googleapis.com/v1/"
+  // },
+
+  // "Python" : {
+  //   // "Path" : "/python/entry_point.py",  
+  //   // "Path" : "/python/orthanc_ext/scripts/study_stable_to_rest.py",
+  //   "Verbose" : true,        // Alias for the global "PythonVerbose" option
+  //   "DisplayMemoryUsage" : false
+  // }
+}
+

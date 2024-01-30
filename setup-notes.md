@@ -106,5 +106,16 @@ medplum get --base-url http://localhost:8103 'Patient/628f2bbb-865b-4ef6-935d-7d
 ### Configure compose file with all services and applications (011124)
 1. Create compose application `docker-compose.path.yml`
 
-* Configure GCP VM
+* Configure GCP VM 
 1. Install docker
+
+IMPORTANT NOTE - Medplum Applications (Admin, etc) can't authenticate to Medplum Server when app is using an IP address, needs Fully Qualified Domain Name with SSL (eg. apps.poc1.gestaltcloud.com)  
+- when deploying to cloud host, need to make sure have DNS
+
+IMPORTANT NOTE - was unable to reuse Medplum DB in a Volume, when DB image that created db was deleted.  Had to create new DB using Medplum create script. (012824)
+
+### Setup Google Auth
+- use https://www.medplum.com/docs/auth/methods/google-auth
+- need to make sure both 
+- need to add googleClientId and googleClientSecret to Medplum Project "Site" before auth will work
+- in Google Auth credentials config, need to make sure Javascript origins and authorized redirect URI's are populated with correct domain

@@ -1,0 +1,10 @@
+FROM nginx:1.25-bookworm
+
+ARG APP_DIST_DIR
+ARG APP_ENV_PATH
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY /apps/docker/nginx/conf.d/ /etc/nginx/conf.d/
+
+COPY ${APP_DIST_DIR} /usr/share/nginx/html
+COPY ${APP_ENV_PATH} /usr/share/nginx/html/.env

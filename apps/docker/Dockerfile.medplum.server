@@ -1,4 +1,5 @@
 FROM node:18-bullseye
+ARG MEDPLUM_CONFIG_FILE
 
 WORKDIR /app
 
@@ -6,7 +7,6 @@ COPY package-lock.json /app/
 COPY package.json /app/
 COPY packages /app/packages
 COPY scripts /app/scripts
-
 RUN npm ci
 
 COPY turbo.json /app/
@@ -14,10 +14,9 @@ COPY tsconfig.json /app/
 COPY tsdoc.json /app/
 COPY api-extractor.json /app/
 
-
 RUN npm run build:fast
-
+# COPY packages/server/${MEDPLUM_CONFIG_FILE} /app/packages/server/medplum.config.json
 WORKDIR /app/packages/server
-# CMD ["npm", "start"]
 
+# CMD ["npm", "start"]
 # ENTRYPOINT ["tail", "-f", "/dev/null"]

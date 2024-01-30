@@ -1,0 +1,5 @@
+MEDPLUM_BASE_URL=https://app.poc1.gestaltcloud.com/v1.0/
+# MEDPLUM_CLIENT_ID=d3d4724b-c74b-4038-a40b-92a1e8e7827f
+GOOGLE_CLIENT_ID=1053568465268-t2coh1p3ke4lrhu6o042squicec9toed.apps.googleusercontent.com
+RECAPTCHA_SITE_KEY=6LdBKjYnAAAAAKOE_QaBQRb7_6yd8Tv-PKRoe8WX
+MEDPLUM_REGISTER_ENABLED=true

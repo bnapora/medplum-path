@@ -1,5 +1,11 @@
 # Projects
 apps/form-mantine-use-drawer-form
+svc_account_key/
+dist/
+repo-viewer-ohif/
+auth-key-files/
+gcp-pathology-poc1_service_key.json
+gcp-wsi-dicom-rnd.json
 
 .DS_Store
 
@@ -10,7 +16,8 @@ binary/
 node_modules/
 
 # Dotenv
-.env
+.env*
+!.env.defaults
 
 .failed
 prettier-fmt.err
