@@ -56,14 +56,14 @@ export function CasesPath(): JSX.Element {
                   imagingstudy.series[0].modality?.code == 'SM' ? (
                     <Anchor 
                       target='_child'
-                      href={`http://localhost/viewer/microscopy?StudyInstanceUIDs=` + imagingstudy.identifier[0].value.replace('urn:oid:','')}           
+                      href={`https://app.poc1.gestaltcloud.com/viewer/microscopy?StudyInstanceUIDs=` + imagingstudy.identifier[0].value.replace('urn:oid:','')}           
                     >
                       <IconPolaroid size={30} style={{ marginRight: 1 }} />
                     </Anchor>
                   ) : (
                     <Anchor 
                       target='_top'            
-                      href={`http://localhost/viewer/viewer?StudyInstanceUIDs=`+ imagingstudy.identifier[0].value.replace('urn:oid:','')}   
+                      href={`https://app.poc1.gestaltcloud.com/viewer/viewer?StudyInstanceUIDs=`+ imagingstudy.identifier[0].value.replace('urn:oid:','')}   
                     >
                       <IconPolaroid size={30} style={{ marginRight: 1 }} />
                     </Anchor>
