@@ -3,7 +3,7 @@ services:
   orthanc:
     # image: osimis/orthanc:master-full
     build:
-      context: ./app-containers/orthanc
+      # context: ./app-containers/orthanc
       dockerfile: Dockerfile
     profiles: [orthanc]
     expose:
@@ -44,6 +44,7 @@ services:
     restart: unless-stopped
 secrets:
   orthanc.json:
-    file: orthanc.json
+    # file: orthanc.json    # LOCALHOST
+    file: /mnt/datadrive/workspace/medplum-path/app-containers/orthanc/orthanc.json # GCP VM
 volumes:
   orthanc_storage: {}

@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1.25-bookworm
 
 ARG APP_DIST_DIR
 ARG APP_ENV_PATH

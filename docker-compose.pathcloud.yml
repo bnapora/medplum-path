@@ -1,24 +1,27 @@
 version: '3.7'
+name: pathcloud-poc1
 include:
   - ./app-containers/orthanc/docker-compose.orthanc.yml
   - ./app-containers/viewer-ohif/docker-compose.viewer-ohif.yml
 services:
   # apps:
   #   container_name: apps
+  #   profiles: [applications]
   #   build:
   #     dockerfile: ./apps/docker/Dockerfile.medplum.apps
   #   # command: /bin/sh -c "/app/entrypoint.sh"
+  #   volumes:
+  #     - /mnt/datadrive/workspace/medplum-path/apps/app-admin/.env:/app/app-admin/.env
   #   command:
   #     - /bin/bash 
   #     - -c 
   #     - |
-  #       cd app-admin && npm run dev
-    
+  #       cd path-medical && npm run dev
   #   expose: 
-  #     - 3001
+  #     # - 3001
   #     - 3005
   #   ports:
-  #     - 3001:3001
+  #     # - 3001:3001
   #     - 3005:3005
   #   depends_on: [medplum] 
 
@@ -33,8 +36,8 @@ services:
         APP_ENV_PATH: /apps/app-admin/.env.app.poc1.gestaltcloud.com
     expose:
       - 80
-    ports:
-      - 3001:80
+    # ports:
+    #   - 3001:80
 
   app-pathcloud:
     container_name: app-pathcloud
@@ -66,34 +69,39 @@ services:
     build:
       dockerfile: ./apps/docker/Dockerfile.medplum.server
       args:
-        MEDPLUM_CONFIG_FILE: medplum.config.json.container
+        MEDPLUM_CONFIG_FILE: medplum.config.json.pathcloud
     command: npm start
     volumes:
-      # - /mnt/datadrive/workspace/medplum-path/apps/bots/src/gcp-dicomstore-webhook-bigquery:/app/bots/gcp-dicomstore-webhook-bigquery
-      - ./apps/bots/src/gcp-dicomstore-webhook-bigquery:/app/bots/gcp-dicomstore-webhook-bigquery
+      - /mnt/datadrive/workspace/medplum-path/apps/bots/src/gcp-dicomstore-webhook-bigquery:/app/bots/gcp-dicomstore-webhook-bigquery
+      # - ./apps/bots/src/gcp-dicomstore-webhook-bigquery:/app/bots/gcp-dicomstore-webhook-bigquery
     expose: 
       - 80
       - 8103
     ports:
       - 8103:8103
-    depends_on: [postgres, redis]  
+    depends_on: [medplum-db, medplum-redis]  
 
-  postgres:
+  medplum-db:
+    container_name: medplum-db
     image: postgres:12
     restart: always
     environment:
       - POSTGRES_USER=medplum
       - POSTGRES_PASSWORD=medplum
     volumes:
-      - ./postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf
-      - ./postgres/:/docker-entrypoint-initdb.d/
-      - postgres_medplum_localhost:/var/lib/postgresql/data
+      - /mnt/datadrive/workspace/medplum-path/postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf:rw
+      - /mnt/datadrive/workspace/medplum-path/postgres/:/docker-entrypoint-initdb.d/
+      # - ./postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf
+      # - ./postgres/:/docker-entrypoint-initdb.d/
+      # - postgres_medplum-path_test:/var/lib/postgresql/data
+      - postgres_medplum-path:/var/lib/postgresql/data
     command: postgres -c config_file=/usr/local/etc/postgres/postgres.conf
     expose: [5432]
     ports:
       - '5432:5432'
-  redis:
+  medplum-redis:
     image: redis:6
+    container_name: medplum-redis
     restart: always
     command: redis-server --requirepass medplum
     expose: [6379]
@@ -102,14 +110,16 @@ services:
   nginx:
     build: 
         context: ./nginx
-        dockerfile: Dockerfile
+        dockerfile: Dockerfile.ssl
     container_name: nginx
-    profiles: [applications]
+    profiles: [nginx]
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/config/localhost/conf.d:/etc/nginx/conf.d
+      - /mnt/datadrive/workspace/medplum-path/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /mnt/datadrive/workspace/medplum-path/nginx/config/app.poc1.gestaltcloud.com/conf.d:/etc/nginx/conf.d
     restart: unless-stopped
     ports: 
       - 80:80
+      - 443:443
 volumes:
-  postgres_medplum_localhost: {}
+  # postgres_medplum-path_test: {}
+  postgres_medplum-path: {}

@@ -16,7 +16,8 @@ binary/
 node_modules/
 
 # Dotenv
-.env
+.env*
+!.env.defaults
 
 .failed
 prettier-fmt.err
